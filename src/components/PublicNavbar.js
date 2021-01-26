@@ -14,8 +14,8 @@ const PublicNavbar = () => {
         <Nav.Link as={NavLink} to="/">
           Home
         </Nav.Link>
-        <Nav.Link as={NavLink} to="/reading">
-          Reading List
+        <Nav.Link as={NavLink} to="/favorites">
+          Favorites
         </Nav.Link>
       </Nav>
       <Nav>

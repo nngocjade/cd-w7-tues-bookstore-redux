@@ -4,6 +4,8 @@ import { ClipLoader } from "react-spinners";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../apiService";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavorites } from "../redux/actions/favorite.actions";
 
 const BACKEND_API = process.env.REACT_APP_BACKEND_API;
 
@@ -13,10 +15,9 @@ const BookDetailPage = () => {
   const [addingBook, setAddingBook] = useState(false);
   const params = useParams();
   const bookId = params.id;
-
-  const addToReadingList = (book) => {
-    setAddingBook(book);
-  };
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.favorite.detailPageError);
+  const success = useSelector((state) => state.favorite.detailPageSuccess);
 
   useEffect(() => {
     const postData = async () => {
@@ -49,6 +50,8 @@ const BookDetailPage = () => {
 
   return (
     <Container>
+      {error ? <h1>{error}</h1> : null}
+      {success ? <h1>{success}</h1> : null}
       {loading ? (
         <div className="text-center">
           <ClipLoader color="#f86c6b" size={150} loading={true} />
@@ -83,9 +86,9 @@ const BookDetailPage = () => {
                 <div>
                   <strong>Language:</strong> {book.language}
                 </div>
-                <Button onClick={() => addToReadingList(book)}>
+                <Button onClick={() => dispatch(addToFavorites(book))}>
                   Add to Reading List
-                </Button>{" "}
+                </Button>
               </>
             )}
           </Col>

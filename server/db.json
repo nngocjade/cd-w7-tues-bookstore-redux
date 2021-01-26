@@ -54,6 +54,72 @@
       "title": "One Thousand and One Nights",
       "year": 1200,
       "id": "BFECD288E75"
+    },
+    {
+      "author": "Honoré de Balzac",
+      "country": "France",
+      "imageLink": "images/le-pere-goriot.jpg",
+      "language": "French",
+      "link": "https://en.wikipedia.org/wiki/Le_P%C3%A8re_Goriot\n",
+      "pages": 443,
+      "title": "Le Père Goriot",
+      "year": 1835,
+      "id": "484CAB01CF8"
+    },
+    {
+      "author": "Vyasa",
+      "country": "India",
+      "imageLink": "images/the-mahab-harata.jpg",
+      "language": "Sanskrit",
+      "link": "https://en.wikipedia.org/wiki/Mahabharata\n",
+      "pages": 276,
+      "title": "Mahabharata",
+      "year": -700,
+      "id": "6773A5CE3A95"
+    },
+    {
+      "author": "Virginia Woolf",
+      "country": "United Kingdom",
+      "imageLink": "images/mrs-dalloway.jpg",
+      "language": "English",
+      "link": "https://en.wikipedia.org/wiki/Mrs_Dalloway\n",
+      "pages": 216,
+      "title": "Mrs Dalloway",
+      "year": 1925,
+      "id": "7B2414A6F497"
+    },
+    {
+      "author": "Albert Camus",
+      "country": "Algeria, French Empire",
+      "imageLink": "images/l-etranger.jpg",
+      "language": "French",
+      "link": "https://en.wikipedia.org/wiki/The_Stranger_(novel)\n",
+      "pages": 185,
+      "title": "The Stranger",
+      "year": 1942,
+      "id": "AEBD2C663213"
+    },
+    {
+      "author": "Virginia Woolf",
+      "country": "United Kingdom",
+      "imageLink": "images/to-the-lighthouse.jpg",
+      "language": "English",
+      "link": "https://en.wikipedia.org/wiki/To_the_Lighthouse\n",
+      "pages": 209,
+      "title": "To the Lighthouse",
+      "year": 1927,
+      "id": "FC61B66F5E98"
+    },
+    {
+      "author": "Knut Hamsun",
+      "country": "Norway",
+      "imageLink": "images/hunger.jpg",
+      "language": "Norwegian",
+      "link": "https://en.wikipedia.org/wiki/Hunger_(Hamsun_novel)\n",
+      "pages": 176,
+      "title": "Hunger",
+      "year": 1890,
+      "id": "F431C47BCE41"
     }
   ],
   "books": [

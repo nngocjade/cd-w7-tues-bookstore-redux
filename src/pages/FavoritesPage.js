@@ -6,13 +6,18 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../apiService";
 
+import { useDispatch, useSelector } from "react-redux";
+import { loadFavorites } from "../redux/actions/favorite.actions";
+
 const BACKEND_API = process.env.REACT_APP_BACKEND_API;
 
 const ReadingPage = () => {
-  const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const books = useSelector((state) => state.favorite.books);
+  const loading = useSelector((state) => state.favorite.loading);
   const [removedBookId, setRemovedBookId] = useState("");
   const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const handleClickBook = (bookId) => {
     history.push(`/books/${bookId}`);
@@ -23,35 +28,24 @@ const ReadingPage = () => {
   };
 
   useEffect(() => {
-    if (removedBookId) return;
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const res = await api.get(`/favorites`);
-        setBooks(res.data);
-      } catch (error) {
-        toast(error.message);
-      }
-      setLoading(false);
-    };
-    fetchData();
-  }, [removedBookId]);
+    dispatch(loadFavorites());
+  }, [dispatch]);
 
-  useEffect(() => {
-    if (!removedBookId) return;
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        await api.delete(`/favorites/${removedBookId}`);
-        toast.success("The book has been removed");
-        setRemovedBookId("");
-      } catch (error) {
-        toast(error.message);
-      }
-      setLoading(false);
-    };
-    fetchData();
-  }, [removedBookId]);
+  // useEffect(() => {
+  //   if (!removedBookId) return;
+  //   const fetchData = async () => {
+  //     setLoading(true);
+  //     try {
+  //       await api.delete(`/favorites/${removedBookId}`);
+  //       toast.success("The book has been removed");
+  //       setRemovedBookId("");
+  //     } catch (error) {
+  //       toast(error.message);
+  //     }
+  //     setLoading(false);
+  //   };
+  //   fetchData();
+  // }, [removedBookId]);
 
   return (
     <Container>
