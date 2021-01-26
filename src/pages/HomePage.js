@@ -7,14 +7,17 @@ import PaginationBar from "../components/PaginationBar";
 import SearchForm from "../components/SearchForm";
 import api from "../apiService";
 
+import bookActions from "../redux/actions/book.actions";
+import { useDispatch, useSelector } from "react-redux";
+
 const BACKEND_API = process.env.REACT_APP_BACKEND_API;
 
 const HomePage = () => {
-  const [books, setBooks] = useState([]);
+  const books = useSelector((state) => state.book.books);
   const [pageNum, setPageNum] = useState(1);
   const totalPage = 10;
   const limit = 10;
-
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
@@ -36,22 +39,8 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        let url = `/books?_page=${pageNum}&_limit=${limit}`;
-        if (query) url += `&q=${query}`;
-        const res = await api.get(url);
-        console.log(res);
-        setBooks(res.data);
-        setErrorMessage("");
-      } catch (error) {
-        setErrorMessage(error.message);
-      }
-      setLoading(false);
-    };
-    fetchData();
-  }, [pageNum, limit, query]);
+    dispatch(bookActions.getBooks(pageNum, limit, query));
+  }, [dispatch, pageNum, limit, query]);
 
   return (
     <Container>
